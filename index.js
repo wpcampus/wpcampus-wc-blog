@@ -162,7 +162,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 		);
 
 		if (that.requestUpdateCount > that.requestUpdateMax) {
-			that.pauseRequestUpdateTimer();
+			that.pauseTimer();
 			return;
 		}
 
@@ -195,7 +195,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 				// @TODO what to do when the request doesn't work?
 			})
 			.finally(() => {
-				that.setRequestUpdateTimer();
+				that.setUpdateTimer();
 			});
 	}
 	async render() {
