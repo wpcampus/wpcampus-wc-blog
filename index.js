@@ -67,9 +67,6 @@ class WPCampusBlog extends WPCampusRequestElement {
 
 		let markup = `<div class="${postsSelector}">${content}</div>`;
 
-		// Add button.
-		markup += "<a href=\"https://wpcampus.org/blog\">Visit the WPCampus blog</a>";
-
 		markup = this.wrapTemplateArea(markup);
 		markup = this.wrapTemplate(markup, true);
 
