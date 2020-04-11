@@ -251,10 +251,10 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@wpcampus/wpcampus-wc-default@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@wpcampus/wpcampus-wc-default/-/wpcampus-wc-default-0.0.1.tgz#446daec8c6fe4b8d3185dbc02f80d323078628f4"
-  integrity sha512-VYizejdAkyVEEV5n0hkleZF/sbC7QnAlzb9+cunn01g8o1uBKTMKCaP0yxVhJMgrM5Y9swj3rdZNZuwp/fJTyA==
+"@wpcampus/wpcampus-wc-default@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@wpcampus/wpcampus-wc-default/-/wpcampus-wc-default-0.0.2.tgz#c0eba0afbe52d1fe0afce071790ac70fb55a563c"
+  integrity sha512-e5ggFtbmpzVjGOAxmCRiaUaqQFgeL1g3BelGQjwEFJ5HSoPchliy8hUYjDCAItR5JCjuK9NHC1XaixdshgMzdw==
 
 acorn-jsx@^5.2.0:
   version "5.2.0"

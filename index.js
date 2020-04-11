@@ -166,7 +166,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 			return;
 		}
 
-		that.requestContent()
+		that.requestContent({ limitKey: "per_page" })
 			.then((response) => {
 				try {
 					if (!response) {
