@@ -43,7 +43,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 		}
 
 		// Make sure have a excerpt.
-		let excerpt = item.excerpt.rendered ? item.excerpt.rendered : null;
+		let excerpt = item.excerpt.basic ? item.excerpt.basic : null;
 		if (!excerpt) {
 			return template;
 		}
@@ -55,7 +55,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 		template = `<h3 class="wpc-blog__title">${template}</h3>`;
 
 		// Add excerpt.
-		template += `<div class="wpc-blog__excerpt">${excerpt}</div>`;
+		template += `<div class="wpc-blog__excerpt"><p>${excerpt}</p></div>`;
 
 		// Wrap in <div>.
 		template = "<div class=\"wpc-blog__post\">" + template + "</div>";
