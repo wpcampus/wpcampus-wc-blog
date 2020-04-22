@@ -8,13 +8,16 @@ const formatDefault = "excerpt";
 const loadingClass = "wpc-blog--loading";
 const postsSelector = "wpc-blog__posts";
 
+// @TODO needs to be update to www for launch.
+const wpcampusDomain = "https://wpcampus.org";
+
 class WPCampusBlog extends WPCampusRequestElement {
 	constructor() {
 		const config = {
 			componentID: "blog",
 			localStorageKey: "wpcBlog",
 			localStorageKeyTime: "wpcBlogTime",
-			requestURL: "https://wpcampus.org/wp-json/wp/v2/posts?get_meta=1"
+			requestURL: `${wpcampusDomain}/wp-json/wp/v2/posts?get_meta=1`
 		};
 		super(config);
 
@@ -26,6 +29,16 @@ class WPCampusBlog extends WPCampusRequestElement {
 		if (!formatOptions.includes(this.format)) {
 			this.format = formatDefault;
 		}
+	}
+	getDateFormatted(dateStr) {
+		if (!dateStr) {
+			return "";
+		}
+		const dateObj = new Date(dateStr);
+		const monthNames = ["January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
+		];
+		return monthNames[dateObj.getMonth()] + " " + dateObj.getDate() + ", " + dateObj.getFullYear();
 	}
 	getTemplate(item) {
 		let template = "";
@@ -53,6 +66,44 @@ class WPCampusBlog extends WPCampusRequestElement {
 
 		// Wrap title in heading.
 		template = `<h3 class="wpc-blog__title">${template}</h3>`;
+
+		// Create meta.
+		let meta = "";
+
+		// Add date.
+		if (item.date) {
+			const dateFormatted = this.getDateFormatted(item.date);
+			if (dateFormatted) {
+				meta += `<li class="wpc-meta__item wpc-meta__item--date">${dateFormatted}</li>`;
+			}
+		}
+
+		// Add author.
+		if (item.author && item.author.length) {
+
+			const authors = item.author.map(author => {
+				let authorStr = "";
+				if (author.display_name) {
+					authorStr += author.display_name;
+				}
+				if (author.path) {
+					authorStr = `<li><a href="${wpcampusDomain}/about/contributors/${author.path}/">${authorStr}</a></li>`;
+				}
+				return authorStr;
+			});
+			
+			meta += `<li class="wpc-meta__item wpc-meta__item--author">
+				<span class="wpc-meta__label">By</span>
+				<ul>
+					${authors}
+				</ul>
+			</li>`;
+		}
+
+		// Add meta.
+		if (meta) {
+			template += `<ul class="wpc-meta wpc-article__meta wpc-blog__meta">${meta}</ul>`;
+		}
 
 		// Add excerpt.
 		template += `<div class="wpc-blog__excerpt"><p>${excerpt}</p></div>`;
