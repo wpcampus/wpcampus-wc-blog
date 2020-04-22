@@ -14,7 +14,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 			componentID: "blog",
 			localStorageKey: "wpcBlog",
 			localStorageKeyTime: "wpcBlogTime",
-			requestURL: "https://wpcampus.org/wp-json/wp/v2/posts"
+			requestURL: "https://wpcampus.org/wp-json/wp/v2/posts?get_meta=1"
 		};
 		super(config);
 
