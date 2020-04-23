@@ -82,12 +82,12 @@ class WPCampusBlog extends WPCampusRequestElement {
 		if (item.author && item.author.length) {
 
 			const authors = item.author.map(author => {
-				let authorStr = "";
-				if (author.display_name) {
-					authorStr += author.display_name;
+				if (!author.display_name) {
+					return "";
 				}
+				let authorStr = author.display_name.trim();
 				if (author.path) {
-					authorStr = `<li><a href="${wpcampusDomain}/about/contributors/${author.path}/">${authorStr}</a></li>`;
+					authorStr = `<li><a href="${wpcampusDomain}/about/contributors/${author.path}/" aria-label="Contributor: ${authorStr}">${authorStr}</a></li>`;
 				}
 				return authorStr;
 			});
