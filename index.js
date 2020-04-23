@@ -8,16 +8,13 @@ const formatDefault = "excerpt";
 const loadingClass = "wpc-blog--loading";
 const postsSelector = "wpc-blog__posts";
 
-// @TODO needs to be update to www for launch.
-const wpcampusDomain = "https://wpcampus.org";
-
 class WPCampusBlog extends WPCampusRequestElement {
 	constructor() {
 		const config = {
 			componentID: "blog",
 			localStorageKey: "wpcBlog",
 			localStorageKeyTime: "wpcBlogTime",
-			requestURL: `${wpcampusDomain}/wp-json/wp/v2/posts?get_meta=1`
+			requestURL: "https://wpcampus.org/wp-json/wp/v2/posts?get_meta=1"
 		};
 		super(config);
 
@@ -87,7 +84,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 				}
 				let authorStr = author.display_name.trim();
 				if (author.path) {
-					authorStr = `<li><a href="${wpcampusDomain}/about/contributors/${author.path}/" aria-label="Contributor: ${authorStr}">${authorStr}</a></li>`;
+					authorStr = `<li><a href="https://www.wpcampus.org/about/contributors/${author.path}/" aria-label="Contributor: ${authorStr}">${authorStr}</a></li>`;
 				}
 				return authorStr;
 			});
