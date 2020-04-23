@@ -265,7 +265,7 @@ class WPCampusBlog extends WPCampusRequestElement {
 
 			that.isRendering(true);
 
-			that.setAttribute("aria-label", "Blog");
+			that.setAttribute("aria-label", "Most recent blog post");
 
 			that.loadContent().then(() => {
 				that.isRendering(false);
