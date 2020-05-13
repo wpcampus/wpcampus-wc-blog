@@ -1,5 +1,5 @@
 const { WPCampusRequestElement } = require("@wpcampus/wpcampus-wc-default");
-const stylesheet = require("./index.css");
+require("./index.css");
 
 // Format options for displaying blog posts.
 const formatOptions = ["list", "excerpt"];
@@ -17,8 +17,6 @@ class WPCampusBlog extends WPCampusRequestElement {
 			requestURL: "https://wpcampus.org/wp-json/wp/v2/posts?get_meta=1"
 		};
 		super(config);
-
-		this.addStyles(stylesheet);
 
 		if (this.dataset.format !== undefined) {
 			this.format = this.dataset.format;
