@@ -24,13 +24,6 @@ class WPCampusBlog extends WPCampusRequestElement {
 		if (!formatOptions.includes(this.format)) {
 			this.format = formatDefault;
 		}
-
-        if (this.dataset.limit !== undefined) {
-            this.limit = parseInt(this.dataset.limit);
-        }
-        if (!this.limit || !(this.limit === -1 || this.limit > 0)) {
-            this.limit = limitDefault;
-        }
 	}
 	getDateFormatted(dateStr) {
 		if (!dateStr) {
